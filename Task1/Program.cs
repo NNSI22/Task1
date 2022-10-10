@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace Task1
 {
     class Program
     {
         static void Main(string[] args)
-        {            
+        {
             ServerCheck();
         }
-    
+
         static void ServerCheck()
         {
             List<string> errorStartTime = new List<string>(); // タイムアウトした時間を保存しておくリスト
@@ -25,15 +25,15 @@ namespace ConsoleApp1
                 if (s == null || s[0] == "") continue;
 
                 string time = s[0];                                  // 時間を保存する
-                string[] stringAddress = s[1].Trim().Split('.','/'); // アドレスを保存する
+                string[] stringAddress = s[1].Trim().Split('.', '/'); // アドレスを保存する
                 string milliSecond = s[2];                           // pingの応答時間を保存する
 
                 string w = ""; // アドレスに関する作業を行う
 
-                for(int i = 0; i < stringAddress.Length - 1; i++)
+                for (int i = 0; i < stringAddress.Length - 1; i++)
                 {
                     int address = int.Parse(stringAddress[i]);
-                    string con = Convert.ToString(address, 2).PadLeft(8,'0');                    
+                    string con = Convert.ToString(address, 2).PadLeft(8, '0');
                     w += con;
                 }
 
@@ -42,7 +42,7 @@ namespace ConsoleApp1
                 // タイムアウトしたか（末尾に"-"があるか）
                 if (milliSecond == "-")
                 {
-                    
+
                     errorStartTime.Add(time);
                     errorServerAddres.Add(serverAddress);
                 }
@@ -65,15 +65,15 @@ namespace ConsoleApp1
                     if (index != -1)
                     {
                         string startTime = errorStartTime[index];
-                        string endTime = time;                        
+                        string endTime = time;
 
-                        int startYear = int.Parse(startTime.Substring(0,4));
-                        int startMonth = int.Parse(startTime.Substring(4,2));
-                        int startDay = int.Parse(startTime.Substring(6,2));
-                        int startHour = int.Parse(startTime.Substring(8,2));
-                        int startMinute = int.Parse(startTime.Substring(10,2));
-                        int startSecond = int.Parse(startTime.Substring(12,2));                        
-                        
+                        int startYear = int.Parse(startTime.Substring(0, 4));
+                        int startMonth = int.Parse(startTime.Substring(4, 2));
+                        int startDay = int.Parse(startTime.Substring(6, 2));
+                        int startHour = int.Parse(startTime.Substring(8, 2));
+                        int startMinute = int.Parse(startTime.Substring(10, 2));
+                        int startSecond = int.Parse(startTime.Substring(12, 2));
+
                         int endYear = int.Parse(endTime.Substring(0, 4));
                         int endMonth = int.Parse(endTime.Substring(4, 2));
                         int endDay = int.Parse(endTime.Substring(6, 2));
