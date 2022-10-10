@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Task1
 {
@@ -10,17 +11,45 @@ namespace Task1
     {
         static void Main(string[] args)
         {
-            ServerCheck();
+            List<string[]> reader = CSVReader();
+
+            ServerCheck(reader);
         }
 
-        static void ServerCheck()
+        static List<string[]> CSVReader()
+        {
+            // ファイル名
+            string fileName = "ServerLog.csv";
+
+            StreamReader sr = new StreamReader(fileName);
+
+            List<string[]> lists = new List<string[]>();
+            string[] firstSt = new string[3];
+
+            while (!sr.EndOfStream)
+            {
+                string line = sr.ReadLine();
+
+                firstSt = line.Split(',');
+                lists.Add(firstSt);
+            }
+
+            return lists;
+        }
+
+        static void ServerCheck(List<string[]> sList)
         {
             List<string> errorStartTime = new List<string>(); // タイムアウトした時間を保存しておくリスト
             List<string> errorServerAddres = new List<string>();// タイムアウトしたサーバーアドレスを保存しておくリスト            
 
-            while (true)
+            List<string[]> reader = sList;            
+
+            int listIndex = 0;
+
+            while (listIndex < reader.Count)
             {
-                string[] s = Console.ReadLine().Trim().Split(',');   // 入力された文字列を受け取る
+                string[] s = reader[listIndex];   // 入力された文字列を受け取る
+                listIndex++;
 
                 if (s == null || s[0] == "") continue;
 
@@ -93,7 +122,7 @@ namespace Task1
                         errorServerAddres.RemoveAll(list => list == removeAddressTarger);
                         errorStartTime.RemoveAll(list => list == removeTimeTarget);
 
-                        Console.WriteLine($"サーバーアドレス{s[1]}のサーバーは{year}年{month}月{day}日{hour}時間{minute}分{second}秒の間故障していました");
+                        Console.WriteLine($"サーバーアドレス{s[1]}のサーバーは{startYear}年{startMonth}月{startDay}日{startHour}時間{startMinute}分{startSecond}秒から{endYear}年{endMonth}月{endDay}日{endHour}時間{endMinute}分{endSecond}秒までの{year}年{month}月{day}日{hour}時間{minute}分{second}秒の間故障していました");
                     }
                 }
             }

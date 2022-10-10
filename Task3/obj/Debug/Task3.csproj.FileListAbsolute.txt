@@ -1,0 +1,7 @@
+C:\Users\g021g1281\Desktop\Git\FixTask\Task3\bin\Debug\Task3.exe.config
+C:\Users\g021g1281\Desktop\Git\FixTask\Task3\bin\Debug\Task3.exe
+C:\Users\g021g1281\Desktop\Git\FixTask\Task3\bin\Debug\Task3.pdb
+C:\Users\g021g1281\Desktop\Git\FixTask\Task3\obj\Debug\Task3.csprojAssemblyReference.cache
+C:\Users\g021g1281\Desktop\Git\FixTask\Task3\obj\Debug\Task3.csproj.CoreCompileInputs.cache
+C:\Users\g021g1281\Desktop\Git\FixTask\Task3\obj\Debug\Task3.exe
+C:\Users\g021g1281\Desktop\Git\FixTask\Task3\obj\Debug\Task3.pdb
